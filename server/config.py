@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from flask_migrate import Migrate
+from flask_cors import CORS
+from flask_restful import Api
 
 import os
 
@@ -26,4 +28,7 @@ metadata = MetaData(naming_convention=naming_convention)
 db = SQLAlchemy(app=app, metadata=metadata) #create an instance of the SQLAlchemy class called db (this is the db object)
 
 migrate = Migrate(app=app, db=db) #create an instance of the Migrate class called migrate (this is the migrate object)
-  
+
+api = Api(app=app) #create an instance of the Api class called api (this is the api object)
+
+CORS(app)  
