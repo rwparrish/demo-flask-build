@@ -11,7 +11,6 @@ with app.app_context():
     db.session.commit()
     print("db cleared")
     
-
     # Create genres
     strategy = Genre(name="Strategy")  
     family = Genre(name="Family")
