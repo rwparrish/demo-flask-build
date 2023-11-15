@@ -7,7 +7,7 @@ class Designer(db.Model, SerializerMixin):
     __tablename__ = "designers"
     
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30), nullable=False)
+    name = db.Column(db.String(30), nullable=False, unique=True)
     # One-to-many relationship - designer can have multiple games
     games = db.relationship("Game", back_populates="designer")
     # Many-to-many relationship - designer can have multiple genres through games
@@ -18,6 +18,8 @@ class Designer(db.Model, SerializerMixin):
     
     # serialize rules to exclude games and genres from the JSON response and help prevent recursion issues
     serialize_rules=(
-        "-games",
-        "-genres"   
+        "-games.designer",
+        "-games.genre",
+        "-genres.designers",
+        "-genres.games"
     )

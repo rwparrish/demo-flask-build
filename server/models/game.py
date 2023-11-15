@@ -1,7 +1,8 @@
 from config import db
+from sqlalchemy_serializer import SerializerMixin
 
 
-class Game(db.Model):
+class Game(db.Model, SerializerMixin):
     
     __tablename__ = "games"
     
@@ -19,3 +20,5 @@ class Game(db.Model):
     
     def __repr__(self):
         return f"<Game id={self.id} title={self.title} players={self.players} time={self.time}>"
+
+    
