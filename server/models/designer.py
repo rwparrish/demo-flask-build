@@ -1,7 +1,8 @@
 from config import db
+from sqlalchemy_serializer import SerializerMixin
 
 
-class Designer(db.Model):
+class Designer(db.Model, SerializerMixin):
     
     __tablename__ = "designers"
     
@@ -14,3 +15,9 @@ class Designer(db.Model):
     
     def __repr__(self):
         return f"<Designer id={self.id} name={self.name}>"
+    
+    # serialize rules to exclude games and genres from the JSON response and help prevent recursion issues
+    serialize_rules=(
+        "-games",
+        "-genres"   
+    )
