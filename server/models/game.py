@@ -21,4 +21,9 @@ class Game(db.Model, SerializerMixin):
     def __repr__(self):
         return f"<Game id={self.id} title={self.title} players={self.players} time={self.time}>"
 
-    
+    serialize_rules=(
+            "-designer.genres",
+            "-designer.games",
+            "-genre.designers",
+            "-genre.games",
+    )

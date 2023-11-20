@@ -17,3 +17,10 @@ class Genre(db.Model, SerializerMixin):
     def __repr__(self):
         return f"<Genre id={self.id} name={self.name}>"
     
+
+    serialize_rules=(
+            "-games.designer",
+            "-games.genre",
+            "-designers.genres",
+            "-designers.games",
+        )
