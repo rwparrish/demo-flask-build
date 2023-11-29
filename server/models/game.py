@@ -7,7 +7,7 @@ class Game(db.Model, SerializerMixin):
     __tablename__ = "games"
     
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(30), nullable=False)
+    title = db.Column(db.String(30), nullable=False, unique=True)
     players = db.Column(db.Integer, nullable=False)
     time = db.Column(db.Integer, nullable=False)
     designer_id = db.Column(db.Integer, db.ForeignKey("designers.id"), nullable=False) #table name.id is used for foreign keys

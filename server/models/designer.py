@@ -7,7 +7,7 @@ class Designer(db.Model, SerializerMixin):
     __tablename__ = "designers"
     
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30), nullable=False, unique=True)
+    name = db.Column(db.String(30), nullable=False)
     # One-to-many relationship - designer can have multiple games
     games = db.relationship("Game", back_populates="designer")
     # Many-to-many relationship - designer can have multiple genres through games
